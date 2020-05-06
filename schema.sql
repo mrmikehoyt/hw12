@@ -31,3 +31,7 @@ SELECT department_id FROM role LEFT JOIN  department ON department.name = role.d
 
 SELECT CONCAT (first_name, "", last_name, "") AS manager_id
 FROM employee;
+
+
+//selects all columns from role table and role.department_id
+select * from department LEFT JOIN  role ON role.department_id 
