@@ -34,3 +34,4 @@ VALUES ("Emerson"), ("Northeastern"), ("MIT");
 
 18:38:22	SELECT role.title , department.name FROM role left JOIN department ON department.id = role.department_id LIMIT 0, 1000	2 row(s) returned	0.000 sec / 0.000 sec
 
+INSERT INTO employee(first_name,last_name) VALUES('Michael','Hoyt');
