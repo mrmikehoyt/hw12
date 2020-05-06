@@ -39,7 +39,7 @@ class Employee{
         
         //return this.name
         //mysql command
-        connection.query("SELECT name FROM role", function(err, res) {
+        connection.query("select first_name & last_name from employee", function(err, res) {
             if (err) throw err;
         
             // Log all results of the SELECT statement
