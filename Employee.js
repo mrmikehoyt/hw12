@@ -3,7 +3,7 @@
 var mysql = require("mysql");
 const Index = require("./index");
 const prompts = require('prompts');
-
+const inquirer = require("inquirer");
 //declaring connection settings to mysql server
 var connection = mysql.createConnection({
     host: "localhost",
@@ -58,7 +58,7 @@ class Employee{
             // Log all results of the SELECT statement
             console.log(res);
             connection.end();
-    //        initialquestions()
+            initialquestions()
         });
     }
     ////defining method to get all employees by department
@@ -84,22 +84,35 @@ class Employee{
 
         //defining method to add employees
         getAddEmployee(){
+            //index2 = new Index(initialquestions())
             //connection.query("INSERT INTO employee(first_name,last_name) VALUES(? , ?);", function(err, res) {
-                (async () => {
-                    const firstandlast = await prompts(firstlastname);    
-        
-            
-            //if (err) throw err;
-            console.log(firstandlast.firstname);
-            console.log(firstandlast.lastname);
-        })();
-            connection.query("select first_name & last_name from employee", function(err, res) {
-            // Log all results of the SELECT statement
-              console.log(res);
-                connection.end();
-              });
+                inquirer.prompt([
+                    {
+                        type: 'input',
+                        name: 'firstName',
+                        message: 'What is the employee first name?',
+                    },
+                    {
+                        type: 'input',
+                        name: 'lastName',
+                        message: 'What is the employee last name?'
+                    }
+                ]).then(function(response) {
+                    connection.query('INSERT INTO employee SET ?',
+                    {first_name: response.firstName,
+                    last_name: response.lastName,
+                    },
+                    function(error) {
+                        if (error) throw error
+                        console.log('Employee added')
+                      //initialquestions()
+                     }
+                    )
+                })
+
+}              
                 
-            }
+            
 
         //defining method to remove employees
         getRemoveEmployee(){
