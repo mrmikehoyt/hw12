@@ -2,6 +2,7 @@
 //declaring mysql variable and to use mysql
 var mysql = require("mysql");
 const Index = require("./index");
+const prompts = require('prompts');
 
 //declaring connection settings to mysql server
 var connection = mysql.createConnection({
@@ -18,6 +19,18 @@ var connection = mysql.createConnection({
     // the database
     database: "companydb"
   });
+  let firstlastname = [
+    {
+      type: 'text',
+      name: 'firstname',
+      message: 'What is your first name?'
+    },
+    {
+      type: 'text',
+      name: 'lastname',
+      message: 'What is your last name?'
+    },
+  ]
   //defining class
 class Employee{
     //defining constructor and variables
@@ -71,14 +84,22 @@ class Employee{
 
         //defining method to add employees
         getAddEmployee(){
-            connection.query("SELECT * FROM employees", function(err, res) {
-                if (err) throw err;
+            //connection.query("INSERT INTO employee(first_name,last_name) VALUES(? , ?);", function(err, res) {
+                (async () => {
+                    const firstandlast = await prompts(firstlastname);    
+        
             
-                // Log all results of the SELECT statement
-                console.log(res);
+            //if (err) throw err;
+            console.log(firstandlast.firstname);
+            console.log(firstandlast.lastname);
+        })();
+            connection.query("select first_name & last_name from employee", function(err, res) {
+            // Log all results of the SELECT statement
+              console.log(res);
                 connection.end();
               });
-        }
+                
+            }
 
         //defining method to remove employees
         getRemoveEmployee(){
