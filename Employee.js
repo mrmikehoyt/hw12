@@ -57,7 +57,7 @@ class Employee{
             if (err) throw err;
         
             // Log all results of the SELECT statement
-            console.log(res);
+            console.table(res);
             connection.end();
         });
     }
@@ -106,7 +106,9 @@ class Employee{
                         if (error) throw error
                         console.log('Employee added')
                       //initialquestions()
-                     }
+                      connection.end();
+
+                    }
                     )
                 })
 
@@ -137,19 +139,47 @@ class Employee{
                     if (error) throw error
                     console.log('Employee removed')
                   //initialquestions()
-                 }
+                  connection.end();
+
+                }
                 )
             })
         }
         //defining method to update employee roles
         getUpdateEmployeeROle(){
-            connection.query("select * from department LEFT JOIN  role ON role.department_id  RIGHT JOIN employee ON employee.role_id", function(err, res) {
-                if (err) throw err;
-            
-                // Log all results of the SELECT statement
-                console.log(res);
-                connection.end();
-              });
+            inquirer.prompt([
+                {
+                    type: 'input',
+                    name: 'title',
+                    message: 'What is the employee title?',
+                },
+                {
+                    type: 'input',
+                    name: 'salary',
+                    message: 'What is the employee salary?',
+                },
+                {
+                type: 'input',
+                name: 'departmentid',
+                message: 'What is the employee department id?',
+            }
+
+                
+            ]).then(function(response) {
+                connection.query('INSERT INTO role (title, salary, department_id) values ("?",?,?)',
+                [response.title,
+                response.salary,
+                response.departmentid
+                ],
+                function(error) {
+                    if (error) throw error
+                    console.log('role updated')
+                    connection.end();
+
+                  //initialquestions()
+                 }
+                )
+            })
         }
         //defining method to update employee manager
         getUpdateEmployeeManager(){
