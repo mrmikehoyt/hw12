@@ -116,14 +116,30 @@ class Employee{
 
         //defining method to remove employees
         getRemoveEmployee(){
-            connection.query("SELECT * FROM employees", function(err, res) {
-                if (err) throw err;
-            
-                // Log all results of the SELECT statement
-                console.log(res);
-                connection.end();
-
-              });
+            inquirer.prompt([
+                {
+                    type: 'input',
+                    name: 'firstName',
+                    message: 'What is the employee first name?',
+                },
+                {
+                    type: 'input',
+                    name: 'lastName',
+                    message: 'What is the employee last name?'
+                }
+            ]).then(function(response) {
+                connection.query('DELETE FROM employee WHERE first_name = ?  AND last_name =  ?; ',
+          
+                [ response.firstName,  
+                response.lastName],
+                
+                function(error) {
+                    if (error) throw error
+                    console.log('Employee removed')
+                  //initialquestions()
+                 }
+                )
+            })
         }
         //defining method to update employee roles
         getUpdateEmployeeROle(){
