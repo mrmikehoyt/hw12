@@ -1,7 +1,6 @@
 const inquirer = require("inquirer");
 const Employee = require("./Employee");
 const mysql = require("mysql2/promise");
-const prompts = require('prompts');
 let questions = [
     {
       type: 'list',
@@ -11,18 +10,7 @@ let questions = [
     }
   ]
 
-let firstlastname = [
-  {
-    type: 'text',
-    name: 'firstname',
-    message: 'What is your first name?'
-  },
-  {
-    type: 'text',
-    name: 'lastname',
-    message: 'What is your last name?'
-  },
-]
+
 initialquestions()
 
 function initialquestions(){
@@ -45,17 +33,12 @@ emp.getAllEmployeeName()
                   
                   getNameEmployee()
                   function getNameEmployee(){  
-                    (async () => {
-                      const firstandlast = await prompts(firstlastname);
-                      let fullname = new Employee (firstlastname.AddEmployee)
-                      // => response => { username, age, about }
-                    })();
 
-                      
-                      
-                    
-                      
-                  }
+
+                      //let fullname = new Employee (firstlastname.AddEmployee)
+                      emp.getAddEmployee()
+        
+                              }
 
                   console.log('Add Employee')                }
                     else if(answer.initialquestions ==='Remove Employe'){
