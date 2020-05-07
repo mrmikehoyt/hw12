@@ -1,6 +1,7 @@
 const inquirer = require("inquirer");
 const Employee = require("./Employee");
 const mysql = require("mysql2/promise");
+const prompts = require('prompts');
 let questions = [
     {
       type: 'list',
@@ -10,6 +11,18 @@ let questions = [
     }
   ]
 
+let firstlastname = [
+  {
+    type: 'text',
+    name: 'firstname',
+    message: 'What is your first name?'
+  },
+  {
+    type: 'text',
+    name: 'lastname',
+    message: 'What is your last name?'
+  },
+]
 initialquestions()
 
 function initialquestions(){
@@ -29,7 +42,22 @@ emp.getAllEmployeeName()
                 else if(answer.initialquestions ==='View all employees by manager?'){
                     console.log('View all employees by by manager?')                }
                  else if(answer.initialquestions ==='Add Employee'){
-                    console.log('Add Employee')                }
+                  
+                  getNameEmployee()
+                  function getNameEmployee(){  
+                    (async () => {
+                      const firstandlast = await prompts(firstlastname);
+                      let fullname = new Employee (firstlastname.AddEmployee)
+                      // => response => { username, age, about }
+                    })();
+
+                      
+                      
+                    
+                      
+                  }
+
+                  console.log('Add Employee')                }
                     else if(answer.initialquestions ==='Remove Employe'){
                         console.log('Remove Employee')                }
                         else if(answer.initialquestions ==='Updat Employee ROle'){
