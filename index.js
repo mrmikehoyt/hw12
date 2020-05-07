@@ -42,9 +42,13 @@ emp.getAllEmployeeName()
 
                   console.log('Add Employee')                }
                     else if(answer.initialquestions ==='Remove Employe'){
-                        console.log('Remove Employee')                }
+                    
+                      emp.getRemoveEmployee()   }
                         else if(answer.initialquestions ==='Updat Employee ROle'){
-                            console.log('Updat Employee ROle')                }
+                            
+                          //console.log('Updat Employee ROle')     
+                          emp.getUpdateEmployeeROle()           
+                          }
                     
                             else if(answer.initialquestions ==='Updat Employee Manager'){
                                 console.log('Updat Employee Manager')                }
@@ -55,4 +59,4 @@ emp.getAllEmployeeName()
                
           )}
           
-module.exports = initialquestions;
+//module.exports = initialquestions();
