@@ -34,4 +34,6 @@ FROM employee;
 
 
 //selects all columns from role table and role.department_id
+select * from department LEFT JOIN  role ON role.department_id
 select * from department LEFT JOIN  role ON role.department_id 
+select * from department LEFT JOIN  role ON role.department_id  RIGHT JOIN employee ON employee.role_id 
