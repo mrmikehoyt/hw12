@@ -52,13 +52,13 @@ class Employee{
         
         //return this.name
         //mysql command
-        connection.query("select first_name & last_name from employee", function(err, res) {
+        //select first_name & last_name from employee
+        connection.query("select * from department LEFT JOIN  role ON role.department_id  RIGHT JOIN employee ON employee.role_id", function(err, res) {
             if (err) throw err;
         
             // Log all results of the SELECT statement
             console.log(res);
             connection.end();
-            initialquestions()
         });
     }
     ////defining method to get all employees by department
@@ -143,7 +143,7 @@ class Employee{
         }
         //defining method to update employee roles
         getUpdateEmployeeROle(){
-            connection.query("SELECT * FROM employees", function(err, res) {
+            connection.query("select * from department LEFT JOIN  role ON role.department_id  RIGHT JOIN employee ON employee.role_id", function(err, res) {
                 if (err) throw err;
             
                 // Log all results of the SELECT statement
