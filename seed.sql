@@ -2,36 +2,39 @@
 USE companydb;
 
 /* Insert 3 Rows into your new table */
-INSERT INTO employee (first_name)
-VALUES ("Michael"), ('John'),('Tommy');
+/*Seeding employee database */
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
+VALUES ("Michael","Hoyt",1,1)
 
-INSERT INTO employee (last_name)
-VALUES ("Hoyt"),("Wolard"),("Douglas");
-
-INSERT INTO employee (manager_id)
-VALUES (first_name, last_name),(last_name);
-
-/* OR */
-INSERT INTO  (name)
-VALUES ("Emerson"), ("Northeastern"), ("MIT");
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
+VALUES ("Biscuit","Bigmac",2,2)
 
 
-18:11:59	use companydb	0 row(s) affected	0.000 sec
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
+VALUES ("John","Doe",3,1)
 
-18:11:59	INSERT INTO employee (first_name) VALUES ("Michael"), ('John'),('Tommy')	Error Code: 1364. Field 'plan' doesn't have a default value	0.000 sec
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
+VALUES ("Jane","Doe",3,1)
 
-18:14:48	ALTER TABLE employee drop column plan	0 row(s) affected Records: 0  Duplicates: 0  Warnings: 0	0.125 sec
+/*Seeding department database */
+INSERT INTO department (name)
+VALUES ("Sales")
 
-18:15:04	INSERT INTO employee (first_name) VALUES ("Michael"), ('John'),('Tommy')	Error Code: 1364. Field 'last_name' doesn't have a default value	0.000 sec
+INSERT INTO department (name)
+VALUES ("Finance")
 
-18:24:07	INSERT INTO department (name) values ("Sales"),("Finance"),("Legal"),("Engineering")	4 row(s) affected Records: 4  Duplicates: 0  Warnings: 0	0.016 sec
+INSERT INTO department (name)
+VALUES ("Legal")
 
-18:26:16	select * from department LIMIT 0, 1000	4 row(s) returned	0.000 sec / 0.000 sec
+INSERT INTO department (name)
+VALUES ("Engineering")
 
-18:33:08	INSERT INTO role (title, salary, department_id) values ("Sales Lead",100000,1) ("Software Engineer",120000,4)	Error Code: 1064. You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '("Software Engineer",120000,4)' at line 2	0.000 sec
-
-18:33:47	INSERT INTO role (title, salary, department_id) values ("Sales Lead",100000,1), ("Software Engineer",120000,4)	2 row(s) affected Records: 2  Duplicates: 0  Warnings: 0	0.015 sec
-
-18:38:22	SELECT role.title , department.name FROM role left JOIN department ON department.id = role.department_id LIMIT 0, 1000	2 row(s) returned	0.000 sec / 0.000 sec
-
-INSERT INTO employee(first_name,last_name) VALUES('Michael','Hoyt');
+/*Seeding role database */
+INSERT INTO role (title, salary, department_id)
+VALUES ("Sales Lead",100000,1)
+INSERT INTO role (title, salary, department_id)
+VALUES ("Software Engineer",120000,4)
+INSERT INTO role (title, salary, department_id)
+VALUES ("Sales Engineer",500000,2)
+INSERT INTO role (title, salary, department_id)
+VALUES ("vp",4,5)
