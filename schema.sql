@@ -26,7 +26,10 @@ id INTEGER NOT NULL AUTO_INCREMENT,
 name varchar (30) not null,
 PRIMARY KEY (id)
 )
+/*This is a join command to join the department, employee, and role tables so that data can be queryed on all 3 databases. */
+select * from department LEFT JOIN  role ON role.department_id  RIGHT JOIN employee ON employee.role_id
 
+/*This is what tutor assisted me with I believe, thigns I first figured out when I was starting assignment*/
 SELECT role_id FROM employee RIGHT JOIN role ON employee.role_id = role.id;
 SELECT role_id FROM employee RIGHT JOIN role ON employee.role_id = role.salary;
 SELECT department_id FROM role LEFT JOIN  department ON department.name = role.department_id;
@@ -35,7 +38,7 @@ SELECT CONCAT (first_name, "", last_name, "") AS manager_id
 FROM employee;
 
 
-//selects all columns from role table and role.department_id
+/*selects all columns from role table and role.department_id */
 select * from department LEFT JOIN  role ON role.department_id
 select * from department LEFT JOIN  role ON role.department_id 
 select * from department LEFT JOIN  role ON role.department_id  RIGHT JOIN employee ON employee.role_id 
