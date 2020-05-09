@@ -1,3 +1,4 @@
+/*copy below in mysql workbench and run that*/
 /*to use company db */
 USE companydb;
 
@@ -38,6 +39,9 @@ INSERT INTO role (title, salary, department_id)
 VALUES ("Sales Engineer",500000,3);
 INSERT INTO role (title, salary, department_id)
 VALUES ("VP",1000000,4);
+
+
+/*copy above in mysql workbench and run that, below is used in Employee.js or for cleaning up database tables in mysql workbench */
 
 /*NOt sure if this belongs in schema or seeds. This is a join command to join the department, employee, and role tables so that data can be queryed on all 3 databases. */
 select * from department LEFT JOIN  role ON role.department_id  RIGHT JOIN employee ON employee.role_id
