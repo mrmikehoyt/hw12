@@ -76,7 +76,7 @@ class Employee{
 }              
     //defining method to get all employees by department
         getAllEmployeeByManager(){
-            connection.query("SELECT * FROM employees", function(err, res) {
+            connection.query("select employee.manager_id, employee.first_name, employee.last_name from department RIGHT JOIN  role ON role.department_id  LEFT JOIN employee ON employee.id", function(err, res) {
                 if (err) throw err;
             
                 // Log all results of the SELECT statement
