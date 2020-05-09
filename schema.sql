@@ -26,7 +26,7 @@ id INTEGER NOT NULL AUTO_INCREMENT,
 name varchar (30) not null,
 PRIMARY KEY (id)
 )
-/*This is a join command to join the department, employee, and role tables so that data can be queryed on all 3 databases. */
+/*NOt sure if this belongs in schema or seeds. This is a join command to join the department, employee, and role tables so that data can be queryed on all 3 databases. */
 select * from department LEFT JOIN  role ON role.department_id  RIGHT JOIN employee ON employee.role_id
 
 /*This is what tutor assisted me with I believe, thigns I first figured out when I was starting assignment*/
