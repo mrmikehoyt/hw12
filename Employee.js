@@ -53,7 +53,7 @@ class Employee{
         //return this.name
         //mysql command
         //select first_name & last_name from employee
-        connection.query("select * from department LEFT JOIN  role ON role.department_id  RIGHT JOIN employee ON employee.role_id", function(err, res) {
+        connection.query("select * from department RIGHT JOIN  role ON role.department_id  LEFT JOIN employee ON employee.id", function(err, res) {
             if (err) throw err;
         
             // Log all results of the SELECT statement
@@ -63,14 +63,30 @@ class Employee{
     }
     ////defining method to get all employees by department
     getAllEmployeeDepartment(){
-        connection.query("SELECT * FROM employees", function(err, res) {
-            if (err) throw err;
-        
-            // Log all results of the SELECT statement
-            console.log(res);
-            connection.end();
-          });
-    }
+        inquirer.prompt([
+            {
+                type: 'list',
+                name: 'departmentname',
+                message: 'What is the name of the department?',
+                choices: ['Sales','Finance','Engineering','Finance'],
+
+            }
+        ]).then(function(response) {
+            connection.query('INSERT INTO employee SET ?',
+            {first_name: response.firstName,
+            last_name: response.lastName,
+            },
+            function(error) {
+                if (error) throw error
+                console.log('Employee added')
+              //initialquestions()
+              connection.end();
+
+            }
+            )
+        })
+
+}              
     //defining method to get all employees by department
         getAllEmployeeByManager(){
             connection.query("SELECT * FROM employees", function(err, res) {
