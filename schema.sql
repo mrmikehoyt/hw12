@@ -1,5 +1,4 @@
 /*copy below in mysql workbench and run that*/
-drop database companydb;
 /*Drops database if exists*/
 Drop Database if exists CompanyDB;
 /*Creates database if exists*/
