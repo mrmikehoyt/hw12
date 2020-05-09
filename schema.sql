@@ -11,6 +11,7 @@ last_name varchar (30) not null,
 role_id integer (99),
 manager_id integer (99),
 PRIMARY KEY (id)
+
 );
 /*Creates role table and creates columns with datatypes, decimal positions, character lengths, and set id to not null*/
 CREATE Table role(
@@ -19,6 +20,7 @@ title varchar (30) not null,
 salary decimal (9,2),
 department_id integer (99),
 PRIMARY KEY (id)
+FOREIGN KEY (department_id)
 );
 /*Creates department table, name column, character length, and set id to not null*/
 create table department(
@@ -42,3 +44,10 @@ FROM employee;
 select * from department LEFT JOIN  role ON role.department_id
 select * from department LEFT JOIN  role ON role.department_id 
 select * from department LEFT JOIN  role ON role.department_id  RIGHT JOIN employee ON employee.role_id 
+
+/*having issue setting foreign key for manager_id after forgetting to do it with create table*/
+ALTER TABLE employee ADD FOREIGN KEY (manager_id) REFERENCES employee(manager_id);
+ALTER TABLE employee ADD FOREIGN KEY (role_id) REFERENCES employee(role_id);
+/*receiving error
+Error Code: 1822. Failed to add the foreign key constraint. Missing index for constraint 'employee_ibfk_1' in the referenced table 'employee'
+/*
