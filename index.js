@@ -25,10 +25,13 @@ emp.getAllEmployeeName()
 
                 }
                 else if(answer.initialquestions ==='View all employees by department?ager'){
-                    console.log('View all employees by department?ager')
+                    //console.log('View all employees by department?ager')
+                    emp.getAllEmployeeDepartment()
                 }
                 else if(answer.initialquestions ==='View all employees by manager?'){
-                    console.log('View all employees by by manager?')                }
+                  emp.getAllEmployeeByManager  
+                  //console.log('View all employees by by manager?')                
+                }
                  else if(answer.initialquestions ==='Add Employee'){
                   
                   getNameEmployee()
