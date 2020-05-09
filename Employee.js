@@ -80,7 +80,7 @@ class Employee{
                 if (err) throw err;
             
                 // Log all results of the SELECT statement
-                console.log(res);
+                console.table(res);
                 connection.end();
               });
         }
