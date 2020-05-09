@@ -61,30 +61,17 @@ class Employee{
             connection.end();
         });
     }
-    ////defining method to get all employees by department
+    ////defining method to get all departments
     getAllEmployeeDepartment(){
-        inquirer.prompt([
-            {
-                type: 'list',
-                name: 'departmentname',
-                message: 'What is the name of the department?',
-                choices: ['Sales','Finance','Engineering','Finance'],
 
-            }
-        ]).then(function(response) {
-            connection.query('INSERT INTO employee SET ?',
-            {first_name: response.firstName,
-            last_name: response.lastName,
-            },
-            function(error) {
-                if (error) throw error
-                console.log('Employee added')
-              //initialquestions()
-              connection.end();
+            connection.query("select department.name, employee.first_name, employee.last_name from department RIGHT JOIN  role ON role.department_id  LEFT JOIN employee ON employee.id", function(err, res) {
+            if (err) throw error
+            console.table(res);
+            connection.end();
 
-            }
-            )
-        })
+
+
+        });
 
 }              
     //defining method to get all employees by department
@@ -161,7 +148,7 @@ class Employee{
                 )
             })
         }
-        //defining method to update employee roles
+        //defining method to add department,employee, and roles
         getUpdateEmployeeROle(){
             inquirer.prompt([
                 {
