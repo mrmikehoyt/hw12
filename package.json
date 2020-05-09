@@ -1,20 +1,27 @@
 {
-  "name": "employeetracker",
+  "name": "hw12",
   "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "watch": "nodemon server.js"
+  "description": "![alt text](https://img.shields.io/badge/build-nodeJS-brightgreen) ![alt text](https://avatars0.githubusercontent.com/u/58241324?v=4)",
+  "main": "index.js",
+  "dependencies": {
+    "inquirer": "^7.1.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.1.0",
+    "prompts": "^2.3.2"
   },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrmikehoyt/hw12.git"
+  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "express": "^4.17.1",
-    "uuid": "^8.0.0"
+  "bugs": {
+    "url": "https://github.com/mrmikehoyt/hw12/issues"
   },
-  "devDependencies": {
-    "nodemon": "^2.0.3"
-  }
+  "homepage": "https://github.com/mrmikehoyt/hw12#readme"
 }
